@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irsyad Hafiz - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(20, 20, 20, 0.8) 0%, transparent 50%),
+        linear-gradient(to bottom, rgba(0, 100, 255, 0.1) 0%, transparent 2px),
+        linear-gradient(to right, rgba(0, 100, 255, 0.1) 0%, transparent 2px);
+      background-size: 30px 30px;
+    }
+    
+    .tech-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23006aff' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .glow-text {
+      text-shadow: 0 0 8px rgba(0, 100, 255, 0.6);
+    }
+    
+    .glow-box {
+      box-shadow: 0 0 15px rgba(0, 100, 255, 0.4);
+    }
+    
+    .section {
+      min-height: 100vh;
+      padding: 80px 10%;
+      position: relative;
+    }
+    
+    .profile-img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 5px solid #0066ff;
+      box-shadow: 0 0 30px rgba(0, 100, 255, 0.6);
+    }
+    
+    .skill-card {
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 100, 255, 0.3);
+    }
+    
+    .project-card {
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 100, 255, 0.4);
+    }
+    
+    .project-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-img {
+      transform: scale(1.05);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #0066ff;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .active::after {
+      width: 100% !important;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(10, 10, 20, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        z-index: 100;
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .hamburger {
+        display: block;
+        z-index: 101;
+      }
+      
+      .profile-img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tech-bg"></div>
+  
+  <!-- Header/Navbar -->
+  <header class="fixed w-full bg-black bg-opacity-80 backdrop-filter backdrop-blur-sm z-50">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold glow-text">
+        <span class="text-blue-500"><</span>
+        <span>IrsyadHafiz</span>
+        <span class="text-blue-500">/></span>
+      </div>
+      
+      <div class="hamburger">
+        <i class="fas fa-bars text-2xl"></i>
+      </div>
+      
+      <ul class="nav-links flex space-x-8">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="home" class="section flex items-center justify-center">
+    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+      <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="text-blue-500 glow-text">Irsyad Hafiz</span></h1>
+        <h2 class="text-2xl md:text-3xl mb-6 glow-text">Information Systems Student</h2>
+        <div class="flex items-center justify-center md:justify-start space-x-4">
+          <div class="w-16 h-1 bg-blue-500"></div>
+          <p class="text-lg text-gray-300">UNIKOM | Faculty of Engineering & Computer Science</p>
+        </div>
+        <div class="mt-10">
+          <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium glow-box transition-all mr-4">Contact Me</a>
+          <a href="#projects" class="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:bg-opacity-10 px-8 py-3 rounded-full font-medium transition-all">See My Work</a>
+        </div>
+      </div>
+      
+      <div class="md:w-1/2 flex justify-center items-center relative">
+        <div class="relative">
+          <img src="f.png" alt="Professional portrait of Irsyad Hafiz, a young male university student with neat appearance, wearing formal attire against a dark blue gradient background" class="profile-img">
+          <div class="absolute -inset-4 rounded-full border-2 border-blue-500 border-opacity-50 animate-pulse pointer-events-none"></div>
+          <div class="absolute -inset-8 rounded-full border-2 border-blue-500 border-opacity-20 animate-pulse pointer-events-none"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about" class="section bg-black bg-opacity-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">About <span class="text-blue-500">Me</span></h2>
+        <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <img src="fp1.png" alt="Irsyad Hafiz working on a laptop at the university computer lab, focused on programming with code visible on screen" class="rounded-lg glow-box w-full">
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Who Am I?</h3>
+          <p class="text-gray-300 mb-6">
+            I am a passionate Information Systems student at Universitas Komputer Indonesia (UNIKOM), Faculty of Engineering and Computer Science. My academic journey has equipped me with strong analytical skills and technical knowledge in software development, database systems, and business process analysis.
+          </p>
+          
+          <div class="mb-6">
+            <h4 class="text-xl font-semibold mb-3 glow-text">Education</h4>
+            <div class="flex items-start mb-4">
+              <div class="bg-blue-500 rounded-full p-2 mr-4">
+                <i class="fas fa-university text-white"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold">Universitas Komputer Indonesia</h5>
+                <p class="text-gray-400 text-sm">Faculty of Engineering and Computer Science</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 class="text-xl font-semibold mb-3 glow-text">Interests</h4>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-blue-500 bg-opacity-20 text-blue-400 rounded-full">Web Development</span>
+              <span class="px-4 py-2 bg-blue-500 bg-opacity-20 text-blue-400 rounded-full">Database Systems</span>
+              <span class="px-4 py-2 bg-blue-500 bg-opacity-20 text-blue-400 rounded-full">Business Analysis</span>
+              <span class="px-4 py-2 bg-blue-500 bg-opacity-20 text-blue-400 rounded-full">UI/UX Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My <span class="text-blue-500">Skills</span></h2>
+        <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-6">Throughout my academic journey, I've developed expertise in various technologies and methodologies relevant to information systems.</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Technical Skills -->
+        <div class="skill-card p-6 rounded-lg border border-gray-800">
+          <div class="text-blue-500 text-4xl mb-4">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Programming</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>HTML/CSS/JavaScript</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>PHP</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Python</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>SQL</span>
+            </li>
+          </ul>
+        </div>
+        
+        
+        <!-- Database -->
+        <div class="skill-card p-6 rounded-lg border border-gray-800">
+          <div class="text-blue-500 text-4xl mb-4">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Database</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>MySQL</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>MongoDB</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>PostgreSQL</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Database Design</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Tools -->
+        <div class="skill-card p-6 rounded-lg border border-gray-800">
+          <div class="text-blue-500 text-4xl mb-4">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Tools</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Git/GitHub</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Figma</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>VS Code</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Postman</span>
+            </li>
+          </ul>
+        </div>
+        
+        
+        <!-- Business Analysis -->
+        <div class="skill-card p-6 rounded-lg border border-gray-800">
+          <div class="text-blue-500 text-4xl mb-4">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Business Analysis</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Requirement Analysis</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>Process Modeling</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>BPMN</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              <span>System Documentation</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-black bg-opacity-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My <span class="text-blue-500">Projects</span></h2>
+        <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-6">Here are some of my academic and personal projects that showcase my skills and learning journey.</p>
+      </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card rounded-lg overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img src="fp1.png" alt="E-commerce website interface showing product listings, shopping cart, and payment options on a laptop screen" class="project-img w-full">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold">FizPlay Store</h3>
+              <span class="text-xs bg-blue-500 bg-opacity-20 text-blue-400 px-2 py-1 rounded-full">Personal</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">Online electronics store with product catalog, cart system, and payment gateway integration.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">React</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">Node.js</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">MongoDB</span>
+            </div>
+          </div>
+        </div>
+        
+
+        
+        <!-- Project 5 -->
+        <div class="project-card rounded-lg overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e6b04b87-05de-45be-af22-90b13026aeaf.png" alt="Data analytics dashboard showing business metrics, sales trends, and KPIs with interactive charts" class="project-img w-full">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold">Business Intelligence Dashboard</h3>
+              <span class="text-xs bg-blue-500 bg-opacity-20 text-blue-400 px-2 py-1 rounded-full">Academic</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">Interactive dashboard for visualizing business data and generating insights using modern BI tools.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">Power BI</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">SQL</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">Python</span>
+            </div>
+          </div>
+        </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Get In <span class="text-blue-500">Touch</span></h2>
+        <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-6">Feel free to reach out to me for collaboration opportunities, job inquiries, or just to say hello!</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-2xl font-bold mb-6 glow-text">Contact Information</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="bg-blue-500 rounded-full p-3 mr-4">
+                <i class="fas fa-map-marker-alt text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Location</h4>
+                <p class="text-gray-400">Bandung, Indonesia</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-blue-500 rounded-full p-3 mr-4">
+                <i class="fas fa-envelope text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Email</h4>
+                <p class="text-gray-400">irsydhfzz13@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-blue-500 rounded-full p-3 mr-4">
+                <i class="fas fa-phone-alt text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Phone</h4>
+                <p class="text-gray-400">+62 812 6373 0801</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-blue-500 rounded-full p-3 mr-4">
+                <i class="fab fa-linkedin-in text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">LinkedIn</h4>
+                <p class="text-gray-400">linkedin.com/in/Irsyad Hafiz</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-blue-500 rounded-full p-3 mr-4">
+                <i class="fab fa-instagram text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Instagram</h4>
+                <p class="text-gray-400">Instagram.com/irsydhfzz</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block mb-2 text-gray-300">Your Name</label>
+                <input type="text" id="name" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your name">
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-gray-300">Your Email</label>
+                <input type="email" id="email" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your email">
+              </div>
+            </div>
+            
+            <div>
+              <label for="subject" class="block mb-2 text-gray-300">Subject</label>
+              <input type="text" id="subject" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter subject">
+            </div>
+            
+            <div>
+              <label for="message" class="block mb-2 text-gray-300">Message</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your message"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium glow-box transition-all">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-black bg-opacity-90 py-8 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="text-2xl font-bold glow-text mb-4 md:mb-0">
+          <span class="text-blue-500"></span>
+          <span>IrsyadHafiz</span>
+          <span class="text-blue-500">/></span>
+        </div>
+        
+        <div class="flex space-x-6 mb-4 md:mb-0">
+          <a href="#" class="text-gray-400 hover:text-blue-500 transition-all">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-blue-500 transition-all">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-blue-500 transition-all">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-blue-500 transition-all">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-6 pt-6 text-center text-gray-500 text-sm">
+        <p>© 2023 Irsyad Hafiz. All rights reserved | Information Systems Student at UNIKOM</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        document.querySelector('.nav-links').classList.remove('active');
+      });
+    });
+    
+    // Add active class to nav links based on scroll position
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 300) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fadeIn');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    document.querySelectorAll('.section').forEach((section) => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
+
